@@ -9,4 +9,4 @@ app.listen(PORT, () => {
   console.info(`> Estoy arribísima en el puerto ${PORT}! ✨🦄`);
 });
 
-app.use('/users', usersRoutes)
+app.use('/', usersRoutes)
