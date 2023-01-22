@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const usersRoutes = require("./routes/userRoutes")
+const usersRoutes = require("../routes/userRoutes")
 const fs = require('fs')
 
 const PORT = 3000;
