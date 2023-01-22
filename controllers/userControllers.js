@@ -172,6 +172,11 @@ const updateFood = (req, res) => {
         }
 })}
 
+const delUser = (req, res) => {
+    
+}
+
+
 module.exports = {
     getUsers,
     getByCountry,
