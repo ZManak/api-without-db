@@ -2,7 +2,6 @@ const express = require('express');
 const fs = require('fs')
 const userControllers = require('../controllers/userControllers')
 const usersApiRouter = express.Router();
-// Rutas de API
 
 usersApiRouter.get('/', userControllers.getUsers)
 usersApiRouter.get('/user/:username?', userControllers.getUsers);
