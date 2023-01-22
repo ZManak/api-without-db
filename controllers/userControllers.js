@@ -146,7 +146,7 @@ const updateCars = (req, res) => {
     const users = parseData();
     users.forEach((user) => {
         if (req.params.username == user.username) {
-            if (req.body.vehicles){
+            if (req.body.vehicles) {
                 console.log(req.body.vehicles)
                 user.vehicles.push(...req.body.vehicles)
                 res.status(200).json(user.vehicles)
@@ -162,7 +162,7 @@ const updateFood = (req, res) => {
         if (req.params.username == user.username) {
             console.log(req.body)
             console.log(user.favouritesFood)
-            if (req.body.foods){
+            if (req.body.foods) {
                 user.favouritesFood.push(...req.body.foods);
                 res.status(200).json(user.favouritesFood)
             } else {
@@ -170,12 +170,33 @@ const updateFood = (req, res) => {
                 res.status(200).json(user.favouritesFood)
             }
         }
-})}
-
-const delUser = (req, res) => {
-    
+    })
 }
 
+const hideUser = (req, res) => {
+    let users = parseData();
+    users.forEach((user)=>{
+        if (req.params.username == user.username) {
+            req.body.email = user.email;
+            user.deleted = true;
+            console.log("User hidden")
+            res.status(200).json(req.body);
+        }
+    })
+}
+
+const delUser = (req, res) => {
+    let users = parseData();
+    users.forEach((user)=>{
+        if (req.params.username == user.username) {
+            if (user.deleted === true) {
+                req.body.email = user.email;
+                res.status(200).json(req.body);
+                console.log("Deleted user: " + user.username);
+                return user;
+                
+            }
+} } ) }
 
 module.exports = {
     getUsers,
@@ -188,5 +209,7 @@ module.exports = {
     postUser,
     updateUser,
     updateCars,
-    updateFood
+    updateFood,
+    hideUser,
+    delUser
 }

@@ -15,5 +15,7 @@ usersApiRouter.post('/users', userControllers.postUser)
 usersApiRouter.put('/user/:username?', userControllers.updateUser)
 usersApiRouter.put('/users/:username?/vehicles', userControllers.updateCars)
 usersApiRouter.put('/users/:username?/foods', userControllers.updateFood)
+usersApiRouter.put('/users/:username?/hide', userControllers.hideUser)
+usersApiRouter.delete('/user/:username?', userControllers.delUser)
 
 module.exports = usersApiRouter
