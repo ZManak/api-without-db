@@ -14,5 +14,6 @@ usersApiRouter.get('/foods', userControllers.getFoods);
 usersApiRouter.post('/users', userControllers.postUser)
 usersApiRouter.put('/user/:username?', userControllers.updateUser)
 usersApiRouter.put('/users/:username?/vehicles', userControllers.updateCars)
+usersApiRouter.put('/users/:username?/foods', userControllers.updateFood)
 
 module.exports = usersApiRouter

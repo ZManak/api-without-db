@@ -156,6 +156,22 @@ const updateCars = (req, res) => {
     )
 }
 
+const updateFood = (req, res) => {
+    const users = parseData();
+    users.forEach((user) => {
+        if (req.params.username == user.username) {
+            console.log(req.body)
+            console.log(user.favouritesFood)
+            if (req.body.foods){
+                user.favouritesFood.push(...req.body.foods);
+                res.status(200).json(user.favouritesFood)
+            } else {
+                user.favouritesFood = [];
+                res.status(200).json(user.favouritesFood)
+            }
+        }
+})}
+
 module.exports = {
     getUsers,
     getByCountry,
@@ -166,5 +182,6 @@ module.exports = {
     byCarType,
     postUser,
     updateUser,
-    updateCars
+    updateCars,
+    updateFood
 }
