@@ -12,6 +12,7 @@ usersApiRouter.get('/users/total', userControllers.getTotal);
 usersApiRouter.get('/users/food/:food?', userControllers.byFood)
 usersApiRouter.get('/foods', userControllers.getFoods);
 usersApiRouter.post('/users', userControllers.postUser)
-usersApiRouter.put('/user/:username?', userControllers.update)
+usersApiRouter.put('/user/:username?', userControllers.updateUser)
+usersApiRouter.put('/users/:username?/vehicles', userControllers.updateCars)
 
 module.exports = usersApiRouter
