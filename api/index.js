@@ -13,6 +13,11 @@ app.use(express.json()); // Habilitar tipo de dato a recibir
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'))
 
+
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳')
+})
+
 app.use('/', usersRoutes)
 
 module.exports = app;

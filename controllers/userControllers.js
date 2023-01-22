@@ -10,18 +10,15 @@ function parseData() {
 
 const getUsers = (req, res) => {
     if (req.params.username) {
-        console.log(req.params)
-        let usersJSON = fs.readFileSync(usersPath, 'utf-8');
-        let users = JSON.parse(usersJSON);
+        let users = parseData();
         users.forEach((user) => {
             if (req.params.username == user.username) {
                 res.status(200).json(user)
             }
         })
     } else {
-        let usersJSON = fs.readFileSync(usersPath, 'utf-8');
-        let users = JSON.parse(usersJSON);
-        res.status(200).json(users)
+        let users = parseData();
+        res.status(200).json(users);
     }
 }
 
