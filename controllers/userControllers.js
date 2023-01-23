@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const usersPath = "db/users.json";
 const { v4: uuidv4 } = require('uuid')
 
@@ -146,7 +147,8 @@ const updateCars = (req, res) => {
             if (req.body.vehicles) {
                 console.log(req.body.vehicles)
                 user.vehicles.push(...req.body.vehicles)
-                res.status(200).json(user.vehicles)
+                fs.writeFileSync(usersPath, JSON.stringify(users));
+                res.status(200).send("Vehicles updated");
             }
         }
     }
@@ -161,9 +163,11 @@ const updateFood = (req, res) => {
             console.log(user.favouritesFood)
             if (req.body.foods) {
                 user.favouritesFood.push(...req.body.foods);
+                fs.writeFileSync(usersPath, JSON.stringify(users));
                 res.status(200).json(user.favouritesFood)
             } else {
                 user.favouritesFood = [];
+                fs.writeFileSync(usersPath, JSON.stringify(users));
                 res.status(200).json(user.favouritesFood)
             }
         }
@@ -176,6 +180,7 @@ const hideUser = (req, res) => {
         if (req.params.username == user.username) {
             req.body.email = user.email;
             user.deleted = true;
+            fs.writeFileSync(usersPath, JSON.stringify(users));
             console.log("User hidden")
             res.status(200).json(req.body);
         }
@@ -188,12 +193,17 @@ const delUser = (req, res) => {
         if (req.params.username == user.username) {
             if (user.deleted === true) {
                 req.body.email = user.email;
+                let index = users.indexOf(user)
+                users.splice(index, 1);
+                fs.writeFileSync(usersPath, JSON.stringify(users));
                 res.status(200).json(req.body);
                 console.log("Deleted user: " + user.username);
                 return user;
-                
+            } else {
+                res.send('User cannot be deleted. Hide it first.')
             }
-} } ) }
+    
+}}) }
 
 module.exports = {
     getUsers,
