@@ -4,10 +4,6 @@ const usersRoutes = require("./routes/userRoutes")
 
 const PORT = 3000;
 
-app.listen(PORT, () => {
-  console.info(`> Estoy arribísima en el puerto ${PORT}! ✨🦄`);
-});
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'))
@@ -18,5 +14,9 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api', usersRoutes)
+
+app.listen(PORT, () => {
+  console.info(`> Estoy arribísima en el puerto ${PORT}! ✨🦄`);
+});
 
 module.exports = app;
