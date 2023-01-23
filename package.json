@@ -4,7 +4,7 @@
   "description": "Simple api without db",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon api/index.js",
+    "power": "nodemon api/index.js",
     "start": "node api/index.js",
     "create": "node scripts/create.js",
     "db": "cat original/users_original.json > db/users.json"
@@ -15,9 +15,11 @@
   "dependencies": {
     "@ngneat/falso": "^4.0.0",
     "express": "^4.17.3",
+    "json-server": "^0.17.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/node": "^17.0.42",
     "nodemon": "^2.0.15"
   }
 }

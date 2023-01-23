@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const usersRoutes = require("../routes/userRoutes")
+const usersRoutes = require("./routes/userRoutes")
 const fs = require('fs')
 
 const PORT = 3000;
@@ -9,15 +9,15 @@ app.listen(PORT, () => {
   console.info(`> Estoy arribísima en el puerto ${PORT}! ✨🦄`);
 });
 
-app.use(express.json()); // Habilitar tipo de dato a recibir
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'))
 
 
 app.get('/', (req, res) => {
-  res.send('Hey this is my API running 🥳')
+  res.send('Welcome to the Random API')
 })
 
-app.use('/', usersRoutes)
+app.use('/api', usersRoutes)
 
 module.exports = app;
