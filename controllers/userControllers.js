@@ -117,8 +117,9 @@ const postUser = (req, res) => {
 
     console.log(req.body)
     if (email && firstName && username) {
-        console.log(req.body)
-        res.status(201).json({ Created: defaultUser })
+        console.log(req.body);
+        fs.writeFileSync(usersPath, JSON.stringify(users));
+        res.status(201).json({ Created: defaultUser });
     }
 }
 
