@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const usersPath = "db/users.json";
+const usersPath = path.join(__dirname + "../db/users.json");
 const { v4: uuidv4 } = require('uuid')
 
 function parseData() {
