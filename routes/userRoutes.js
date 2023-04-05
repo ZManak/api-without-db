@@ -1,9 +1,18 @@
-const express = require('express');
-const userRoutes = express.Router();
-const userControllers = require("../controllers/userControllers")
+const express = require("express");
+const fs = require("fs");
+const userControllers = require("../controllers/userControllers");
+const usersApiRouter = express.Router();
+// Rutas de API
 
-userRoutes.get('/', userControllers.getUser);
+usersApiRouter.get("/", userControllers.getUsers);
+usersApiRouter.get("/user/:username?", userControllers.getUsers);
+usersApiRouter.get("/country/:country?", userControllers.getByCountry);
+usersApiRouter.get("/users/total", userControllers.getTotal);
+//usersApiRouter.get('/users/vehicles', userControllers.byCarNum, userControllers.byCarType);
+usersApiRouter.get("/users/food/:food?", userControllers.byFood);
+usersApiRouter.get("/foods", userControllers.getFoods);
+usersApiRouter.post("/users", userControllers.postUser);
+usersApiRouter.put("/user/:username?", userControllers.updateUser);
+usersApiRouter.put("/users/:username?/vehicles", userControllers.updateCars);
 
-userRoutes.post('/', userControllers.postUser);
-
-module.exports = userRoutes;
+module.exports = usersApiRouter;
